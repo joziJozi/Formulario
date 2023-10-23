@@ -4,9 +4,12 @@ import { ScrollView } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
 
 
-const ProfessoresForm = ({navigation}) => {
+const ProfessoresForm = ({navigation, route}) => {
 
-  const [dados, setDados] = useState({})
+  const Professor = route.params?.Professor || {}
+  const id = route.params?.id 
+
+  const [dados, setDados] = useState(Professor)
 
   function handlechange(valor, campo) {
     setDados({ ...dados, [campo]: valor })
@@ -16,13 +19,18 @@ const ProfessoresForm = ({navigation}) => {
 
     AsyncStorage.getItem('professores').then(resultado => {
       const professores = JSON.parse(resultado) || []
-      professores.push (dados)
+      if(id>=0){
+        professores.splice(id, 1, dados)
+      } else{
+        professores.push (dados)
+      }
       console.log(professores)
    
       AsyncStorage.setItem('professores', JSON.stringify(professores))
    
       navigation.goBack()
     })
+    
 
    
   }
