@@ -4,6 +4,7 @@ import React, {useState } from 'react'
 import { ScrollView } from 'react-native'
 import { Button, Card, Dialog, FAB, IconButton, Portal, Text } from 'react-native-paper'
 
+
   const Cursos = ({navigation}) => {
 
   const [curso, setCurso] = useState([])
