@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { ScrollView, View } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
 import alunoValidator from '../../validators/alunoValidator'
+import { mask } from 'remask'
 
 
 
@@ -78,7 +79,7 @@ const AlunosForm = ({navigation, route}) => {
         <TextInput style={{ marginTop: 10 }}
          label='CPF'
         mode='outlined'
-        onChangeText={handleChange('cpf')}
+        onChangeText={(value)=>{setFieldValue('cpf', mask(value, '999.999.999-99') )}}
         value={values.cpf}></TextInput>
         {(errors.cpf && touched.cpf) &&
                 <Text style={{ marginTop: 10, color: 'red' }}>{errors.cpf}</Text>
@@ -96,7 +97,7 @@ const AlunosForm = ({navigation, route}) => {
         <TextInput style={{ marginTop: 10 }}
         label='E-mail'
         mode='outlined'
-        onChangeText={ handleChange('email')}
+        onChangeText={(value)=>{setFieldValue('email', mask(value, 'username@gmail.com') )}}
         value={values.email}></TextInput>
         {(errors.email && touched.email) &&
                 <Text style={{ marginTop: 10, color: 'red' }}>{errors.email}</Text>
@@ -105,7 +106,7 @@ const AlunosForm = ({navigation, route}) => {
         <TextInput style={{ marginTop: 10 }}
         label='Telefone'
         mode='outlined'
-        onChangeText={handleChange('telefone')}
+        onChangeText={(value)=>{setFieldValue('telefone', mask(value, '(99)99999-9999') )}}
         value={values.telefone}></TextInput>
         {(errors.telefone && touched.telefone) &&
                 <Text style={{ marginTop: 10, color: 'red' }}>{errors.telefone}</Text>
@@ -114,7 +115,7 @@ const AlunosForm = ({navigation, route}) => {
         <TextInput style={{ marginTop: 10 }}
         label='CEP'
         mode='outlined'
-        onChangeText={ handleChange('cep')}
+        onChangeText={(value)=>{setFieldValue('cep', mask(value, '99.999-999') )}}
         value={values.cep}></TextInput>
         {(errors.cep && touched.cep) &&
                 <Text style={{ marginTop: 10, color: 'red' }}>{errors.cep}</Text>

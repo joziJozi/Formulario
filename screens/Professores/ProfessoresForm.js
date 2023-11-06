@@ -4,8 +4,8 @@ import { ScrollView, View } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
 import { useState } from 'react'
 import professoresValidator from '../../validators/professoresValidator'
-import { Picker } from '@react-native-picker/picker'
-import cursoValidator from '../../validators/cursoValidator'
+import { mask } from 'remask'
+
 
 const ProfessoresForm = ({ navigation, route }) => {
 
@@ -79,7 +79,7 @@ const ProfessoresForm = ({ navigation, route }) => {
               <TextInput style={{ marginTop: 10 }}
                 label='CPF'
                 mode='outlined'
-                onChangeText={handleChange('cpf')}
+                onChangeText={(value)=>{setFieldValue('cpf', mask(value, '999.999.999-99') )}}
                 value={values.cpf}></TextInput>
               {(errors.cpf && touched.cpf) &&
                 <Text style={{ marginTop: 10, color: 'red' }}>{errors.cpf}</Text>
@@ -103,11 +103,20 @@ const ProfessoresForm = ({ navigation, route }) => {
                 <Text style={{ marginTop: 10, color: 'red' }}>{errors.salario}</Text>
               }
 
+              <TextInput style={{ marginTop: 10 }}
+                label='E-mail'
+                mode='outlined'
+                onChange={(e) => setFieldValue('email', e.target.values)}
+                value={values.email}></TextInput>
+              {(errors.email && touched.email) &&
+                <Text style={{ marginTop: 10, color: 'red' }}>{errors.email}</Text>
+              }
+
               
-<TextInput style={{ marginTop: 10 }}
+              <TextInput style={{ marginTop: 10 }}
                 label='Telefone'
                 mode='outlined'
-                onChangeText={handleChange('telefone')}
+                onChangeText={(value)=>{setFieldValue('telefone', mask(value, '(99)99999-9999') )}}
                 value={values.telefone}></TextInput>
               {(errors.telefone && touched.telefone) &&
                 <Text style={{ marginTop: 10, color: 'red' }}>{errors.telefone}</Text>
@@ -116,7 +125,7 @@ const ProfessoresForm = ({ navigation, route }) => {
               <TextInput style={{ marginTop: 10 }}
                 label='CEP'
                 mode='outlined'
-                onChangeText={handleChange('cep')}
+                onChangeText={(value)=>{setFieldValue('cep', mask(value, '99.999-999') )}}
                 value={values.cep}></TextInput>
               {(errors.cep && touched.cep) &&
                 <Text style={{ marginTop: 10, color: 'red' }}>{errors.cep}</Text>
@@ -143,7 +152,7 @@ const ProfessoresForm = ({ navigation, route }) => {
               <TextInput style={{ marginTop: 10 }}
                 label='Número'
                 mode='outlined'
-                onChangeText={(valor) => handleChange(valor, 'numero')}
+                onChangeText={handleChange('numero')}
                 value={values.numero}></TextInput>
               {(errors.numero && touched.numero) &&
                 <Text style={{ marginTop: 10, color: 'red' }}>{errors.numero}</Text>
@@ -152,7 +161,7 @@ const ProfessoresForm = ({ navigation, route }) => {
               <TextInput style={{ marginTop: 10 }}
                 label='Bairro'
                 mode='outlined'
-                onChangeText={(valor) => handleChange(valor, 'bairro')}
+                onChangeText={handleChange('bairro')}
                 value={values.bairro}></TextInput>
               {(errors.bairro && touched.bairro) &&
                 <Text style={{ marginTop: 10, color: 'red' }}>{errors.bairro}</Text>

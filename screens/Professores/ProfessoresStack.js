@@ -4,6 +4,7 @@ import ProfessoresForm from './ProfessoresForm';
 import Professores from './Professores';
 
 
+
 const Stack = createNativeStackNavigator();
 
 const ProfessoresStack = () => {
