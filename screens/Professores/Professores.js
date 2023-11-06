@@ -55,14 +55,7 @@ import { Button, Card, Dialog, FAB, IconButton, Portal, Text } from 'react-nativ
       <Text variant="titleLarge">{item.nome}</Text>
       <Text variant="bodyMedium">CPF:{item.cpf}.</Text>
       <Text variant="bodyMedium">Matricula:{item.matricula}.</Text>
-      <Text variant="bodyMedium">Salario:{item.salario}.</Text>
-      <Text variant="bodyMedium">E-mail:{item.email}.</Text>
-      <Text variant="bodyMedium">Telefone:{item.telefone}.</Text>
-      <Text variant="bodyMedium">CEP:{item.cep}.</Text>
-      <Text variant="bodyMedium">Logradouro:{item.logradouro}.</Text>
-      <Text variant="bodyMedium">Complemento:{item.complemento}.</Text>
-      <Text variant="bodyMedium">Número:{item.numero}.</Text>
-      <Text variant="bodyMedium">Bairro:{item.bairro}.</Text>      
+      <Text variant="bodyMedium">Salario:{item.salario}.</Text>      
     </Card.Content>
     <Card.Actions>
       <IconButton icon='account-edit' iconColor='blue'onPress={() => navigation.push('Professores - Form', {id: i, Professor: item})}></IconButton>
