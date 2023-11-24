@@ -2,10 +2,14 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { NavigationContainer } from '@react-navigation/native';
 import { PaperProvider } from 'react-native-paper';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import CursosStack from './screens/Cursos/CursosStack';
-import DisciplinasStack from './screens/Disciplinas/DisciplinasStack';
-import AlunosStack from './screens/Alunos/AlunosStack';
-import ProfessoresStack from './screens/Professores/ProfessoresStack';
+import Home from './screens/Home/Home';
+import ParceriaStack from './screens/Parcerias/ParceriaStack';
+import EventosStack from './screens/Eventos/EventosStack';
+import InscreverStack from './screens/Inscrever/InscreverStack';
+import TurismoStack from './screens/Turismo/TurismoStack';
+import EdusescStack from './screens/Edusesc/EdusescStack';
+
+
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -17,26 +21,35 @@ export default function App() {
         <NavigationContainer>
           <Tab.Navigator>
             <Tab.Screen
-              name="Cursos" 
-              component={CursosStack}
+              name="Home" 
+              component={Home}
               options={{
                 tabBarIcon: () => (
-                  <MaterialCommunityIcons name="bookshelf" size={26} />
+                  <MaterialCommunityIcons name="home" size={26} />
                 ),
               }}
             />
             <Tab.Screen
-              name="Disciplinas" 
-              component={DisciplinasStack}
+              name="Increva-se" 
+              component={InscreverStack}
               options={{
                 tabBarIcon: () => (
-                  <MaterialCommunityIcons name="book-open-variant" size={26} />
+                  <MaterialCommunityIcons name="pencil" size={26} />
                 ),
               }}
             />
             <Tab.Screen
-              name="Alunos" 
-              component={AlunosStack}
+              name="Turismo" 
+              component={TurismoStack}
+              options={{
+                tabBarIcon: () => (
+                  <MaterialCommunityIcons name="bus" size={26} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Parceria" 
+              component={ParceriaStack}
               options={{
                 tabBarIcon: () => (
                   <MaterialCommunityIcons name="human-handsup" size={26} />
@@ -44,14 +57,24 @@ export default function App() {
               }}
             />
             <Tab.Screen
-              name="Professores" 
-              component={ProfessoresStack}
+              name="Eventos" 
+              component={EventosStack}
               options={{
                 tabBarIcon: () => (
-                  <MaterialCommunityIcons name="account-tie" size={26} />
+                  <MaterialCommunityIcons name="calendar" size={26} />
                 ),
               }}
             />
+            <Tab.Screen
+              name="Edusesc" 
+              component={EdusescStack}
+              options={{
+                tabBarIcon: () => (
+                  <MaterialCommunityIcons name="calculator" size={26} />
+                ),
+              }}
+            />
+           
           </Tab.Navigator>
         </NavigationContainer>
       </PaperProvider>
